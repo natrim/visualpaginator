@@ -18,6 +18,9 @@ class ComponentPaginator extends Control
     /** @var Paginator */
     private $paginator;
 
+    /** @var array */
+    private $class = array('paginator');
+
     /**
      * @param $paginator Paginator
      * @return ComponentPaginator
@@ -59,6 +62,7 @@ class ComponentPaginator extends Control
     {
         $this->template->steps = $this->getPaginator()->getPagesListFriendly();
         $this->template->paginator = $this->getPaginator();
+        $this->template->class = $this->getClass();
 
         if ($this->template->getFile() === NULL) {
             $this->template->setFile(dirname(__FILE__) . '/templates/paginator.phtml');
@@ -91,6 +95,49 @@ class ComponentPaginator extends Control
     public function setTemplateFile($file)
     {
         $this->getTemplate()->setFile($file);
+        return $this;
+    }
+
+    /**
+     * @param $class string|array
+     */
+    public function setClass($class)
+    {
+        $this->class = (array)$class;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    /**
+     * @param $class string
+     */
+    public function addClass($class)
+    {
+        $this->class[] = $class;
+        return $this;
+    }
+
+    /**
+     * @param $class string
+     */
+    public function removeClass($class)
+    {
+        $newclass = array();
+        foreach ($this->class as $cl) {
+            if ($cl !== $class) {
+                $newclass[] = $cl;
+            }
+        }
+
+        $this->class = $newclass;
+
         return $this;
     }
 }
