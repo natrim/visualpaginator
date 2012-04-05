@@ -1,0 +1,29 @@
+{*
+ * @param Paginator $paginator
+ * @param array     $steps
+ *}
+
+{if $paginator->pageCount > 1}
+<div class="paginator">
+	{if $paginator->isFirst()}
+		<span class="button">&laquo; P&#345;edchoz&iacute;</span>
+		{else}
+		<a href="{link this, 'page' => $paginator->page - 1}">&laquo; P&#345;edchoz&iacute;</a>
+	{/if}
+
+	{foreach $steps as $step}
+		{if $step == $paginator->page}
+			<span class="current">{$step}</span>
+			{else}
+			<a href="{link this, 'page' => $step}">{$step}</a>
+		{/if}
+			{if $iterator->nextValue > $step + 1}<span>…</span>{/if}
+	{/foreach}
+
+	{if $paginator->isLast()}
+		<span class="button">Dal&scaron;&iacute; &raquo;</span>
+		{else}
+		<a href="{link this, 'page' => $paginator->page + 1}">Dal&scaron;&iacute; &raquo;</a>
+	{/if}
+</div>
+{/if}
