@@ -12,6 +12,9 @@ use Nette\Application\UI\Control;
 class ComponentPaginator extends Control
 {
 
+    /** @var array */
+    public $onChange;
+
     /** @var Paginator */
     private $paginator;
 
@@ -73,6 +76,9 @@ class ComponentPaginator extends Control
     public function setPage($page)
     {
         $this->getPaginator()->page = $page;
+
+        $this->onChange();
+
         return $this;
     }
 
@@ -87,5 +93,4 @@ class ComponentPaginator extends Control
         $this->getTemplate()->setFile($file);
         return $this;
     }
-
 }
