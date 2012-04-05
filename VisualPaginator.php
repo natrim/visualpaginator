@@ -26,4 +26,12 @@ class VisualPaginator extends ComponentPaginator
         $this->setPage($this->page);
     }
 
+    /**
+     * Creates new instance
+     * @return VisualPaginator
+     */
+    public function createPaginator()
+    {
+        return new VisualPaginator;
+    }
 }
