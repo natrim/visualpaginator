@@ -15,6 +15,15 @@ class ComponentPaginator extends Control
     /** @var Paginator */
     private $paginator;
 
+    /**
+     * @param $paginator Paginator
+     * @return ComponentPaginator
+     */
+    public function setPaginator($paginator)
+    {
+        $this->paginator = $paginator;
+        return $this;
+    }
 
     /**
      * @return Paginator
