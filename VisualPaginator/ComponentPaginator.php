@@ -27,11 +27,12 @@ class ComponentPaginator extends Control
 
     /**
      * @return Paginator
+     * @throw \InvalidArgumentException if paginator not set
      */
     public function getPaginator()
     {
         if ($this->paginator === NULL) {
-            $this->paginator = new Paginator;
+            throw new \InvalidArgumentException("The paginator was not set! Use \'setPaginator\' to set paginator first!");
         }
 
         return $this->paginator;
