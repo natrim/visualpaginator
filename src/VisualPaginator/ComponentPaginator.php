@@ -112,7 +112,7 @@ class ComponentPaginator extends Control
      */
     public function getClass()
     {
-        return $this->class;
+        return implode(' ', $this->class);
     }
 
     /**
