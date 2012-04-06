@@ -65,7 +65,7 @@ class ComponentPaginator extends Control
         $this->template->class = $this->getClass();
 
         if ($this->template->getFile() === NULL) {
-            $this->template->setFile(dirname(__FILE__) . '/templates/paginator.phtml');
+            $this->template->setFile(dirname(__FILE__) . '/../../templates/paginator.phtml');
         }
 
         return (string)$this->template;

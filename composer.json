@@ -9,7 +9,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"VisualPaginator": ""
+			"VisualPaginator": "src/"
 		}
 	},
 	"authors": [
