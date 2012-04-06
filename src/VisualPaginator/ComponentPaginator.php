@@ -84,7 +84,7 @@ class ComponentPaginator extends Control
     {
         $this->getPaginator()->page = $page;
 
-        if ($this->isAjax()) {
+        if ($this->presenter->isAjax()) {
             $this->invalidateControl();
         }
 
