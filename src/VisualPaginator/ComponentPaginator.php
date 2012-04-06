@@ -21,6 +21,9 @@ class ComponentPaginator extends Control
     /** @var array */
     private $class = array('paginator');
 
+    /** @var string */
+    private $ajaxClass = 'ajax';
+
     /**
      * @param $paginator Paginator
      * @return ComponentPaginator
@@ -81,11 +84,36 @@ class ComponentPaginator extends Control
     {
         $this->getPaginator()->page = $page;
 
+        if ($this->isAjax()) {
+            $this->invalidateControl();
+        }
+
         $this->onChange();
 
         return $this;
     }
 
+
+    /**
+     * Get ajax class
+     * @return string
+     */
+    public function getAjaxClass()
+    {
+        return $this->ajaxClass;
+    }
+
+
+    /**
+     * Set ajax class
+     * @param string $ajaxClass ajax class
+     * @return ComponentPaginator
+     */
+    public function setAjaxClass($ajaxClass)
+    {
+        $this->ajaxClass = $ajaxClass;
+        return $this;
+    }
 
     /**
      * @param string $file
