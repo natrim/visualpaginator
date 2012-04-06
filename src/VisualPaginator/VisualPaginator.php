@@ -12,7 +12,7 @@ class VisualPaginator extends ComponentPaginator
 {
 
     /** @persistent */
-    public $page = 1;
+    public $page;
 
 
     /**
@@ -23,6 +23,12 @@ class VisualPaginator extends ComponentPaginator
     public function loadState(array $params)
     {
         parent::loadState($params);
+
+        if (!$this->presenter->isAjax() && (int)$this->page === 1) {
+            $this->redirect('this', array('page' => NULL));
+            return;
+        }
+
         $this->setPage($this->page);
     }
 }
