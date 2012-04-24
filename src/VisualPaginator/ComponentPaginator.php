@@ -8,6 +8,8 @@ use Nette\Application\UI\Control;
 /**
  * @author David Grudl
  * @author Filip Procházka
+ *
+ * @property $paginator
  */
 class ComponentPaginator extends Control
 {
@@ -36,12 +38,11 @@ class ComponentPaginator extends Control
 
     /**
      * @return Paginator
-     * @throw \InvalidArgumentException if paginator not set
      */
     public function getPaginator()
     {
-        if ($this->paginator === NULL) {
-            throw new \InvalidArgumentException('The paginator was not set! Use \'setPaginator\' to set paginator first!');
+        if (is_null($this->paginator)) {
+            $this->paginator = new Paginator;
         }
 
         return $this->paginator;
