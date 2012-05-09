@@ -89,7 +89,7 @@ class ComponentPaginator extends Control
             $this->invalidateControl();
         }
 
-        $this->onChange();
+        $this->onChange($this, $page);
 
         return $this;
     }
