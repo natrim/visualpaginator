@@ -9,9 +9,11 @@ use Nette\Application\UI\Control;
  * @author David Grudl
  * @author Filip Procházka
  *
+ * @abstract
+ *
  * @property $paginator
  */
-class ComponentPaginator extends Control
+abstract class ComponentPaginator extends Control
 {
 
     /** @var array */
