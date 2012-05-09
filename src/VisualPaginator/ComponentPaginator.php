@@ -95,7 +95,7 @@ abstract class ComponentPaginator extends Control
             }
         }
 
-        $this->onChange($this, $page);
+        $this->onChange($page, $this);
 
         return $this;
     }
