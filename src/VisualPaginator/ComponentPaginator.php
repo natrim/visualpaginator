@@ -8,6 +8,7 @@ use Nette\Application\UI\Control;
 /**
  * @author David Grudl
  * @author Filip Procházka
+ * @author Natrim
  *
  * @abstract
  *
@@ -89,7 +90,9 @@ abstract class ComponentPaginator extends Control
 
         if ($this->presenter->isAjax()) {
             $this->invalidateControl();
-            $this->getParent()->invalidateControl();
+            if ($this->getParent() instanceof Control && get_class($this->getParent()) !== 'Nette\Application\UI\Presenter') {
+                $this->getParent()->invalidateControl();
+            }
         }
 
         $this->onChange($this, $page);

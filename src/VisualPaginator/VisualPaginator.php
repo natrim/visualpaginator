@@ -7,6 +7,7 @@ namespace VisualPaginator;
  * Visual paginator control.
  * @author David Grudl
  * @author Filip Procházka
+ * @author Natrim
  */
 class VisualPaginator extends ComponentPaginator
 {
@@ -18,7 +19,7 @@ class VisualPaginator extends ComponentPaginator
     /**
      * Loads state informations.
      * @param  array
-     * @return void
+     * @return NULL
      */
     public function loadState(array $params)
     {
