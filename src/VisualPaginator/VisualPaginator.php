@@ -66,9 +66,11 @@ class VisualPaginator extends ComponentPaginator
             $session = $this->getStateSession();
             foreach ($this->getPersistentParams() as $name) {
                 if (isset($session[$name]) && !isset($params[$name])) {
-                    if ($session[$name] >= $this->paginator->getFirstPage() && $session[$name] <= $this->paginator->getLastPage()) {
-                        $params[$name] = $session[$name];
+                    if ($name === 'page' && ($session[$name] < $this->paginator->getFirstPage() || $session[$name] > $this->paginator->getLastPage())) {
+                        continue;
                     }
+
+                    $params[$name] = $session[$name];
                 }
             }
         }
