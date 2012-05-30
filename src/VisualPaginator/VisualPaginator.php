@@ -10,6 +10,7 @@ namespace VisualPaginator;
  * @author Natrim
  *
  * @property $rememberState bool
+ * @property $stateTimeout string|int
  */
 class VisualPaginator extends ComponentPaginator
 {
@@ -21,7 +22,7 @@ class VisualPaginator extends ComponentPaginator
     private $remember = FALSE;
 
     /** @var int|string session timeout (default: until is browser closed) */
-    public $timeout = 0;
+    private $timeout = 0;
 
     /** @var \Nette\Http\Session */
     private $session;
@@ -127,6 +128,25 @@ class VisualPaginator extends ComponentPaginator
     {
         $this->session = $session;
         return $this;
+    }
+
+    /**
+     * Sets the timeout for the saved state in session
+     * @param int|string $timeout
+     * @return \VisualPaginator\VisualPaginator
+     */
+    public function setStateTimeout($timeout)
+    {
+        $this->timeout = $timeout;
+        return $this;
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getStateTimeout()
+    {
+        return $this->timeout;
     }
 
 }
