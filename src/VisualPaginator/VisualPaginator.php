@@ -63,6 +63,11 @@ class VisualPaginator extends ComponentPaginator
      */
     public function loadState(array $params)
     {
+        if (!$this->presenter->isAjax() && isset($params['page']) && (int)$params['page'] === 1) {
+            $this->redirect('this', array('page' => NULL));
+            return;
+        }
+
         if ($this->rememberState) {
             $session = $this->getStateSession();
             foreach ($this->getPersistentParams() as $name) {
@@ -77,11 +82,6 @@ class VisualPaginator extends ComponentPaginator
         }
 
         parent::loadState($params);
-
-        if (!$this->presenter->isAjax() && (int)$this->page === 1) {
-            $this->redirect('this', array('page' => NULL));
-            return;
-        }
 
         $this->setPage($this->page);
     }
